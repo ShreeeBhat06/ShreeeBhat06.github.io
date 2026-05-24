@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Shreelaxmi Bhat — Backend Developer</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --bg:        #001233;
+    --bg2:       #001845;
+    --bg3:       #002855;
+    --card:      #00173d;
+    --border:    #0353a4;
+    --border-s:  #023e7d;
+    --accent:    #0466c8;
+    --accent-d:  #0353a4;
+    --grey1:     #33415c;
+    --grey2:     #5c677d;
+    --grey3:     #7d8597;
+    --grey4:     #979dac;
+    --text:      #e2e8f0;
+    --text2:     #7d8597;
+    --text3:     #33415c;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.1rem 4rem;
+    border-bottom: 1px solid var(--border-s);
+    background: rgba(0,18,51,0.92);
+    backdrop-filter: blur(10px);
+  }
+  .nav-logo {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9rem; font-weight: 500;
+    color: var(--accent);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+  }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.8rem; font-weight: 500;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--grey3); text-decoration: none;
+    transition: color 0.15s;
+  }
+  .nav-links a:hover { color: var(--text); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 0 4rem; padding-top: 80px;
+    max-width: 900px;
+  }
+
+  .hero-mono {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem; font-weight: 400;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    margin-bottom: 1.25rem;
+  }
+
+  h1 {
+    font-size: clamp(2.4rem, 5vw, 3.8rem);
+    font-weight: 600;
+    line-height: 1.15;
+    color: var(--text);
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.02em;
+  }
+
+  .hero-role {
+    font-size: clamp(1.1rem, 2vw, 1.4rem);
+    font-weight: 300;
+    color: var(--grey3);
+    margin-bottom: 1.75rem;
+    letter-spacing: -0.01em;
+  }
+
+  .hero-desc {
+    font-size: 1rem;
+    color: var(--grey3);
+    max-width: 520px;
+    margin-bottom: 2.5rem;
+    line-height: 1.85;
+    font-weight: 300;
+  }
+
+  .hero-ctas { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.65rem 1.5rem;
+    background: var(--accent); color: #fff;
+    font-size: 0.82rem; font-weight: 500;
+    letter-spacing: 0.04em; text-decoration: none;
+    border-radius: 4px; border: 1px solid var(--accent);
+    transition: background 0.15s;
+  }
+  .btn-primary:hover { background: var(--accent-d); border-color: var(--accent-d); }
+
+  .btn-ghost {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.65rem 1.5rem;
+    background: transparent; color: var(--grey3);
+    font-size: 0.82rem; font-weight: 500;
+    letter-spacing: 0.04em; text-decoration: none;
+    border-radius: 4px; border: 1px solid var(--border-s);
+    transition: border-color 0.15s, color 0.15s;
+  }
+  .btn-ghost:hover { border-color: var(--grey3); color: var(--text); }
+
+  /* DIVIDER */
+  .section-divider {
+    border: none;
+    border-top: 1px solid var(--border-s);
+    margin: 0 4rem;
+  }
+
+  /* SECTIONS */
+  section { padding: 5rem 4rem; }
+
+  .section-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem; font-weight: 500;
+    color: var(--accent);
+    letter-spacing: 0.15em; text-transform: uppercase;
+    margin-bottom: 2rem;
+  }
+
+  h2 {
+    font-size: 1.6rem; font-weight: 600;
+    color: var(--text); margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+  }
+
+  /* ABOUT */
+  .about-body {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    gap: 4rem; align-items: start;
+  }
+
+  .about-text p {
+    font-size: 0.95rem; color: var(--grey3);
+    margin-bottom: 1rem; line-height: 1.85;
+    font-weight: 300;
+  }
+  .about-text p strong { color: var(--text); font-weight: 500; }
+
+  .about-facts { display: flex; flex-direction: column; gap: 0; }
+
+  .fact-row {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0.85rem 0;
+    border-bottom: 1px solid var(--border-s);
+    font-size: 0.85rem;
+  }
+  .fact-row:first-child { border-top: 1px solid var(--border-s); }
+  .fact-label { color: var(--grey2); font-weight: 400; }
+  .fact-val {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem; color: var(--text); font-weight: 500;
+  }
+
+  /* SKILLS */
+  #skills { background: var(--bg2); }
+
+  .skills-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border: 1px solid var(--border-s);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  .skill-item {
+    display: flex; align-items: center; gap: 0.75rem;
+    padding: 1rem 1.25rem;
+    border-right: 1px solid var(--border-s);
+    border-bottom: 1px solid var(--border-s);
+    transition: background 0.15s;
+  }
+  .skill-item:hover { background: rgba(4,102,200,0.07); }
+  .skill-item:nth-child(3n) { border-right: none; }
+  .skill-item:nth-last-child(-n+3) { border-bottom: none; }
+
+  .skill-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--accent); flex-shrink: 0;
+  }
+  .skill-text { font-size: 0.88rem; font-weight: 500; color: var(--text); }
+
+  /* PROJECTS */
+  .projects-list { display: flex; flex-direction: column; gap: 1px; background: var(--border-s); border: 1px solid var(--border-s); border-radius: 6px; overflow: hidden; }
+
+  .project-item {
+    background: var(--card);
+    padding: 2rem;
+    transition: background 0.15s;
+  }
+  .project-item:hover { background: rgba(4,102,200,0.05); }
+
+  .project-top {
+    display: flex; align-items: flex-start;
+    justify-content: space-between; gap: 2rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .project-name {
+    font-size: 1.1rem; font-weight: 600;
+    color: var(--text); letter-spacing: -0.01em;
+  }
+
+  .project-links { display: flex; gap: 1rem; flex-shrink: 0; }
+  .project-link {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem; font-weight: 500;
+    color: var(--accent); text-decoration: none;
+    letter-spacing: 0.05em;
+    display: flex; align-items: center; gap: 0.3rem;
+    transition: color 0.15s;
+  }
+  .project-link:hover { color: var(--grey4); }
+  .project-link svg { width: 11px; height: 11px; }
+
+  .project-desc {
+    font-size: 0.88rem; color: var(--grey3);
+    line-height: 1.75; margin-bottom: 1rem;
+    font-weight: 300; max-width: 680px;
+  }
+
+  .project-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem; font-weight: 400;
+    padding: 0.2rem 0.6rem;
+    background: var(--bg3);
+    border: 1px solid var(--border-s);
+    border-radius: 3px; color: var(--grey4);
+  }
+
+  /* CONTACT */
+  #contact { background: var(--bg2); }
+
+  .contact-body { max-width: 560px; }
+  .contact-body p {
+    font-size: 0.95rem; color: var(--grey3);
+    margin-bottom: 2rem; line-height: 1.85; font-weight: 300;
+  }
+
+  .contact-list { display: flex; flex-direction: column; gap: 0; border: 1px solid var(--border-s); border-radius: 6px; overflow: hidden; }
+
+  .contact-row {
+    display: flex; align-items: center; gap: 1rem;
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid var(--border-s);
+    text-decoration: none;
+    transition: background 0.15s;
+  }
+  .contact-row:last-child { border-bottom: none; }
+  .contact-row:hover { background: rgba(4,102,200,0.07); }
+
+  .contact-icon {
+    width: 32px; height: 32px;
+    background: var(--bg3); border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .contact-icon svg { width: 15px; height: 15px; }
+
+  .contact-label { font-size: 0.85rem; font-weight: 500; color: var(--text); }
+  .contact-val {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem; color: var(--grey3);
+    margin-left: auto;
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border-s);
+    padding: 1.5rem 4rem;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .footer-text {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem; color: var(--text3);
+  }
+  .footer-text span { color: var(--accent); }
+
+  /* REVEAL */
+  .reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero { padding: 6rem 1.5rem 3rem; }
+    section { padding: 3.5rem 1.5rem; }
+    hr.section-divider { margin: 0 1.5rem; }
+    .about-body { grid-template-columns: 1fr; gap: 2rem; }
+    .skills-list { grid-template-columns: repeat(2, 1fr); }
+    .skill-item:nth-child(3n) { border-right: 1px solid var(--border-s); }
+    .skill-item:nth-child(2n) { border-right: none; }
+    footer { flex-direction: column; gap: 0.4rem; padding: 1.25rem 1.5rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">SB</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-mono">// backend developer</div>
+  <h1>Shreelaxmi Bhat</h1>
+  <div class="hero-role">Java · Spring Boot · REST APIs</div>
+  <p class="hero-desc">I build backend systems that are clean, secure, and production-ready. Currently looking for backend developer roles.</p>
+  <div class="hero-ctas">
+    <a href="#projects" class="btn-primary">View Projects</a>
+    <a href="https://github.com/ShreeeBhat06" target="_blank" class="btn-ghost">GitHub</a>
+    <a href="mailto:shreelaxmibhat9685@gmail.com" class="btn-ghost">Contact</a>
+  </div>
+</section>
+
+<hr class="section-divider"/>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-eyebrow">01 / About</div>
+  <div class="about-body reveal">
+    <div class="about-text">
+      <h2>A bit about me.</h2>
+      <p>I'm an MCA graduate from GIMS Bengaluru with a strong foundation in <strong>Java backend development</strong>. I've spent the last two years building with Spring Boot — from CRUD APIs to JWT-secured, production-deployed services.</p>
+      <p>I care about writing code that's maintainable and well-structured. I understand layered architecture, JPA relationships, and how to secure an API endpoint properly. I focus on building things end to end — from writing the API to getting it deployed and accessible.</p>
+      <p>I'm actively looking for a backend or Java developer role where I can contribute from day one.</p>
+    </div>
+    <div class="about-facts">
+      <div class="fact-row">
+        <span class="fact-label">Location</span>
+        <span class="fact-val">Bengaluru, IN</span>
+      </div>
+      <div class="fact-row">
+        <span class="fact-label">Education</span>
+        <span class="fact-val">MCA · GIMS</span>
+      </div>
+      <div class="fact-row">
+        <span class="fact-label">Primary stack</span>
+        <span class="fact-val">Java + Spring Boot</span>
+      </div>
+      <div class="fact-row">
+        <span class="fact-label">Database</span>
+        <span class="fact-val">MySQL</span>
+      </div>
+      <div class="fact-row">
+        <span class="fact-label">Status</span>
+        <span class="fact-val" style="color:var(--accent)">Open to work</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider"/>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-eyebrow">02 / Skills</div>
+  <h2 style="margin-bottom:2rem">What I work with.</h2>
+  <div class="skills-list reveal">
+    <div class="skill-item"><div class="skill-dot"></div><span class="skill-text">Java</span></div>
+    <div class="skill-item"><div class="skill-dot"></div><span class="skill-text">Spring Boot</span></div>
+    <div class="skill-item"><div class="skill-dot"></div><span class="skill-text">REST APIs</span></div>
+    <div class="skill-item"><div class="skill-dot"></div><span class="skill-text">Spring Security</span></div>
+    <div class="skill-item"><div class="skill-dot"></div><span class="skill-text">JWT Auth</span></div>
+    <div class="skill-item"><div class="skill-dot"></div><span class="skill-text">MySQL</span></div>
+    <div class="skill-item"><div class="skill-dot"></div><span class="skill-text">Hibernate / JPA</span></div>
+    <div class="skill-item"><div class="skill-dot"></div><span class="skill-text">Git & GitHub</span></div>
+    <div class="skill-item"><div class="skill-dot"></div><span class="skill-text">DSA Fundamentals</span></div>
+  </div>
+</section>
+
+<hr class="section-divider"/>
+
+<!-- PROJECTS -->
+<section id="projects" style="background:var(--bg)">
+  <div class="section-eyebrow">03 / Projects</div>
+  <h2 style="margin-bottom:2rem">Things I've built.</h2>
+  <div class="projects-list reveal">
+
+    <div class="project-item">
+      <div class="project-top">
+        <div class="project-name">TaskFlow</div>
+        <div class="project-links">
+          <a href="https://taskflow-api-production-57b6.up.railway.app/swagger-ui/index.html" target="_blank" class="project-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            Live
+          </a>
+          <a href="https://github.com/ShreeeBhat06/taskflow-api" target="_blank" class="project-link">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+            GitHub
+          </a>
+        </div>
+      </div>
+      <p class="project-desc">A production-deployed RESTful Task Management API. Supports user registration and login with JWT authentication, full task CRUD with status and priority management, and interactive Swagger documentation.</p>
+      <div class="project-tags">
+        <span class="tag">Java</span>
+        <span class="tag">Spring Boot 3</span>
+        <span class="tag">Spring Security</span>
+        <span class="tag">JWT</span>
+        <span class="tag">MySQL</span>
+        <span class="tag">Swagger UI</span>
+        <span class="tag">Railway</span>
+      </div>
+    </div>
+
+    <div class="project-item">
+      <div class="project-top">
+        <div class="project-name">ProjectNest</div>
+        <div class="project-links">
+          <a href="https://github.com/ShreeeBhat06/ProjectNest" target="_blank" class="project-link">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+            GitHub
+          </a>
+        </div>
+      </div>
+      <p class="project-desc">A full-stack academic project management system with three roles — students submit and track projects, faculty review and provide feedback, admins manage the entire platform. Built with Spring Boot and Thymeleaf.</p>
+      <div class="project-tags">
+        <span class="tag">Java</span>
+        <span class="tag">Spring Boot</span>
+        <span class="tag">Thymeleaf</span>
+        <span class="tag">Spring Security</span>
+        <span class="tag">MySQL</span>
+        <span class="tag">Hibernate</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="section-divider"/>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-eyebrow">04 / Contact</div>
+  <div class="contact-body reveal">
+    <h2>Let's connect.</h2>
+    <p>I'm actively looking for backend developer roles. Open to full-time positions across India — on-site, hybrid, or remote.</p>
+    <div class="contact-list">
+      <a href="mailto:shreelaxmibhat9685@gmail.com" class="contact-row">
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+        </div>
+        <span class="contact-label">Email</span>
+        <span class="contact-val">shreelaxmibhat9685@gmail.com</span>
+      </a>
+      <a href="https://www.linkedin.com/in/shreelaxmibhat" target="_blank" class="contact-row">
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24" fill="var(--accent)"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </div>
+        <span class="contact-label">LinkedIn</span>
+        <span class="contact-val">in/shreelaxmibhat</span>
+      </a>
+      <a href="https://github.com/ShreeeBhat06" target="_blank" class="contact-row">
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24" fill="var(--accent)"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+        </div>
+        <span class="contact-label">GitHub</span>
+        <span class="contact-val">ShreeeBhat06</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-text">© 2026 Shreelaxmi Bhat</span>
+  <span class="footer-text">Built with <span>HTML · CSS · JS</span></span>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver(
+    entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+    { threshold: 0.08 }
+  );
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
