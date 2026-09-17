@@ -3,204 +3,280 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Shreelaxmi Bhat — Software Engineer</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<title>Shreelaxmi Bhat </title>
 <style>
-  :root{
-    --paper:#FFFBFC;
-    --paper-soft:#FBF6FA;
-    --ink:#2A1B3D;
-    --ink-dim:#6B5B78;
-    --line:#E9DFEE;
-    --lavender:#9B7EDE;
-    --blossom:#EFA6C8;
-    --mint:#A8E6CF;
-    --serif:'Fraunces', serif;
-    --sans:'Inter', sans-serif;
-  }
-  *{box-sizing:border-box; margin:0; padding:0;}
-  html{scroll-behavior:smooth;}
-  body{
-    background:var(--paper);
-    color:var(--ink);
-    font-family:var(--sans);
-    line-height:1.65;
-    -webkit-font-smoothing:antialiased;
-  }
-  a{color:inherit; text-decoration:none;}
-  .wrap{max-width:760px; margin:0 auto; padding:0 28px;}
-
-  ::selection{background:var(--blossom); color:var(--ink);}
-
-  /* ---- nav ---- */
-  header{
-    padding:26px 0;
-    border-bottom:1px solid var(--line);
-  }
-  header .wrap{display:flex; align-items:center; justify-content:space-between;}
-  .brand{font-family:var(--serif); font-weight:600; font-size:17px;}
-  nav{display:flex; gap:28px; font-size:14px; color:var(--ink-dim);}
-  nav a{transition:color .15s;}
-  nav a:hover{color:var(--lavender);}
-
-  /* ---- hero ---- */
-  .hero{
-    position:relative;
-    padding:96px 0 84px;
-    overflow:hidden;
-  }
-  .hero-bloom{
-    position:absolute;
-    top:-220px; right:-180px;
-    width:560px; height:560px;
-    border-radius:50%;
-    background:conic-gradient(from 140deg, var(--lavender), var(--blossom), var(--mint), var(--lavender));
-    filter:blur(90px);
-    opacity:.35;
-    pointer-events:none;
-  }
-  .hero .wrap{position:relative;}
-  .kicker{
-    font-size:15px; color:var(--ink-dim); margin-bottom:18px;
-  }
-  h1{
-    font-family:var(--serif);
-    font-weight:500;
-    font-style:italic;
-    font-size:clamp(30px,4.6vw,44px);
-    line-height:1.18;
-    letter-spacing:-.01em;
-    max-width:14ch;
-    margin-bottom:24px;
-  }
-  .hero p.lead{
-    font-size:17px;
-    color:var(--ink-dim);
-    max-width:52ch;
-    margin-bottom:36px;
-  }
-  .cta-row{display:flex; gap:14px; flex-wrap:wrap;}
-  .btn{
-    font-size:14.5px;
-    padding:12px 22px;
-    border-radius:999px;
-    border:1px solid var(--line);
-    background:var(--paper);
-    transition:border-color .18s, transform .18s, box-shadow .18s;
-  }
-  .btn:hover{transform:translateY(-1px);}
-  .btn.primary{
-    background:linear-gradient(120deg, var(--lavender), var(--blossom));
-    color:#fff;
-    border-color:transparent;
-    box-shadow:0 8px 20px -8px rgba(155,126,222,.55);
-  }
-  .btn.ghost:hover{border-color:var(--lavender); color:var(--lavender);}
-
-  /* ---- section shell ---- */
-  section{padding:56px 0; border-bottom:1px solid var(--line);}
-  h2{
-    font-family:var(--serif);
-    font-weight:500;
-    font-size:26px;
-    margin-bottom:26px;
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
   }
 
-  /* ---- about ---- */
-  .about p{color:var(--ink-dim); max-width:60ch; margin-bottom:16px; font-size:15.5px;}
-  .about strong{color:var(--ink); font-weight:600;}
-  .facts{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; margin-top:36px; border:1px solid var(--line); border-radius:14px; overflow:hidden; background:var(--line);}
-  .fact{background:var(--paper-soft); padding:18px 16px;}
-  .fact .k{font-size:12px; color:var(--ink-dim); margin-bottom:6px;}
-  .fact .v{font-size:14px; font-weight:600;}
-
-  /* ---- skills ---- */
-  .skill-group{margin-bottom:26px;}
-  .skill-group:last-child{margin-bottom:0;}
-  .skill-group .label{
-    font-size:13px; color:var(--ink-dim); margin-bottom:10px;
-    display:flex; align-items:center; gap:8px;
-  }
-  .skill-group .label::before{
-    content:""; width:14px; height:2px; border-radius:2px;
-    background:linear-gradient(90deg, var(--lavender), var(--mint));
-    display:inline-block;
-  }
-  .chip-row{display:flex; flex-wrap:wrap; gap:8px;}
-  .chip{
-    font-size:13.5px; padding:7px 14px; border:1px solid var(--line);
-    border-radius:999px; color:var(--ink); background:var(--paper-soft);
-  }
-  .chip.soft{color:var(--ink-dim); border-style:dashed;}
-
-  /* ---- projects ---- */
-  .project{
-    border-top:2px solid transparent;
-    border-image:linear-gradient(90deg, var(--lavender), var(--blossom), var(--mint)) 1;
-    padding:22px 0 26px;
-    margin-bottom:8px;
-  }
-  .project-top{display:flex; align-items:baseline; justify-content:space-between; flex-wrap:wrap; gap:8px; margin-bottom:10px;}
-  .project-top h3{font-family:var(--serif); font-weight:500; font-size:19px;}
-  .project-links{font-size:13px;}
-  .project-links a{color:var(--lavender);}
-  .project-links a:hover{text-decoration:underline;}
-  .project p{color:var(--ink-dim); font-size:14.5px; margin-bottom:14px; max-width:62ch;}
-  .stack-row{display:flex; flex-wrap:wrap; gap:8px;}
-  .stack-row span{font-size:12px; color:var(--ink-dim); border:1px solid var(--line); padding:4px 10px; border-radius:999px;}
-
-  /* ---- experience ---- */
-  .exp-row{display:flex; gap:24px;}
-  .exp-meta{font-size:13px; color:var(--ink-dim); min-width:150px; padding-top:3px;}
-  .exp-body h3{font-family:var(--serif); font-weight:500; font-size:18px; margin-bottom:3px;}
-  .exp-body .role{color:var(--ink-dim); font-size:13.5px; margin-bottom:12px;}
-  .exp-body ul{padding-left:18px; color:var(--ink-dim); font-size:14.5px;}
-  .exp-body li{margin-bottom:7px;}
-
-  /* ---- contact ---- */
-  .contact-inner{
-    position:relative;
-    border-radius:20px;
-    padding:52px 40px;
-    text-align:left;
-    overflow:hidden;
-    background:var(--paper-soft);
-    border:1px solid var(--line);
-  }
-  .contact-glow{
-    position:absolute; bottom:-160px; left:-100px;
-    width:380px; height:380px; border-radius:50%;
-    background:conic-gradient(from 200deg, var(--mint), var(--blossom), var(--lavender));
-    filter:blur(80px); opacity:.3; pointer-events:none;
-  }
-  .contact-inner h2{margin-bottom:12px; position:relative;}
-  .contact-inner p{color:var(--ink-dim); margin-bottom:26px; max-width:46ch; position:relative;}
-  .contact-links{display:flex; gap:14px; flex-wrap:wrap; position:relative;}
-
-  footer{padding:28px 0; font-size:13px; color:var(--ink-dim); display:flex; justify-content:space-between;}
-
-  @media (max-width:640px){
-    .facts{grid-template-columns:1fr 1fr;}
-    nav{display:none;}
-    .exp-row{flex-direction:column; gap:6px;}
-    .contact-inner{padding:36px 24px;}
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+    color: #222222;
+    background-color: #ffffff;
   }
 
-  @media (prefers-reduced-motion: reduce){
-    html{scroll-behavior:auto;}
-    *{transition:none !important;}
+  a {
+    color: #6c3fc5;
+    text-decoration: none;
   }
 
-  :focus-visible{outline:2px solid var(--lavender); outline-offset:2px;}
+  a:hover {
+    text-decoration: underline;
+  }
+
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  /* Header / Nav */
+  header {
+    background-color: #f4effa;
+    border-bottom: 1px solid #ddd;
+    padding: 15px 0;
+  }
+
+  header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  header h2 {
+    font-size: 20px;
+  }
+
+  nav a {
+    margin-left: 20px;
+    font-size: 15px;
+    color: #333333;
+  }
+
+  /* Hero */
+  .hero {
+    padding: 60px 0 50px;
+    text-align: left;
+  }
+
+  .hero p.location {
+    color: #666666;
+    margin-bottom: 10px;
+  }
+
+  .hero h1 {
+    font-size: 32px;
+    margin-bottom: 15px;
+    color: #333333;
+  }
+
+  .hero p.summary {
+    max-width: 650px;
+    color: #444444;
+    margin-bottom: 25px;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 10px 18px;
+    border: 1px solid #6c3fc5;
+    border-radius: 4px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    font-size: 14px;
+  }
+
+  .btn.primary {
+    background-color: #6c3fc5;
+    color: #ffffff;
+  }
+
+  .btn.primary:hover {
+    background-color: #582fa8;
+    text-decoration: none;
+  }
+
+  .btn.secondary {
+    background-color: #ffffff;
+    color: #6c3fc5;
+  }
+
+  /* Section */
+  section {
+    padding: 40px 0;
+    border-bottom: 1px solid #e5e5e5;
+  }
+
+  section h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333333;
+  }
+
+  /* About */
+  .about p {
+    margin-bottom: 12px;
+    color: #444444;
+    max-width: 700px;
+  }
+
+  table.facts {
+    margin-top: 20px;
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  table.facts td {
+    border: 1px solid #ddd;
+    padding: 10px 12px;
+    font-size: 14px;
+  }
+
+  table.facts td.label {
+    color: #777777;
+    width: 140px;
+    background-color: #f8f8f8;
+  }
+
+  /* Skills */
+  .skill-block {
+    margin-bottom: 20px;
+  }
+
+  .skill-block h3 {
+    font-size: 15px;
+    color: #6c3fc5;
+    margin-bottom: 8px;
+  }
+
+  .tag-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .tag-list li {
+    background-color: #f4effa;
+    border: 1px solid #ddd;
+    padding: 5px 12px;
+    border-radius: 4px;
+    font-size: 13px;
+  }
+
+  /* Projects */
+  .project {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 20px;
+    margin-bottom: 18px;
+  }
+
+  .project-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+
+  .project h3 {
+    font-size: 18px;
+    color: #333333;
+  }
+
+  .project-links a {
+    font-size: 13px;
+  }
+
+  .project p {
+    color: #444444;
+    margin-bottom: 10px;
+  }
+
+  .project ul {
+    margin: 0 0 10px 18px;
+    color: #444444;
+    font-size: 14px;
+  }
+
+  .project ul li {
+    margin-bottom: 5px;
+  }
+
+  .stack {
+    font-size: 13px;
+    color: #6c3fc5;
+  }
+
+  /* Experience */
+  .exp-item {
+    margin-bottom: 15px;
+  }
+
+  .exp-item h3 {
+    font-size: 17px;
+    color: #333333;
+  }
+
+  .exp-item .exp-sub {
+    color: #666666;
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+
+  .exp-item ul {
+    margin-left: 18px;
+    color: #444444;
+    font-size: 14px;
+  }
+
+  .exp-item li {
+    margin-bottom: 5px;
+  }
+
+  /* Contact */
+  #contact {
+    text-align: left;
+  }
+
+  #contact p {
+    color: #444444;
+    margin-bottom: 20px;
+  }
+
+  footer {
+    padding: 20px 0;
+    font-size: 13px;
+    color: #777777;
+    text-align: center;
+  }
+
+  /* Mobile */
+  @media (max-width: 600px) {
+    nav {
+      width: 100%;
+      margin-top: 10px;
+    }
+    nav a {
+      margin-left: 0;
+      margin-right: 15px;
+    }
+    table.facts td.label {
+      width: 100px;
+    }
+  }
 </style>
 </head>
 <body>
 
 <header>
-  <div class="wrap">
-    <div class="brand">Shreelaxmi Bhat</div>
+  <div class="container">
+    <h2>Shreelaxmi Bhat</h2>
     <nav>
       <a href="#about">About</a>
       <a href="#skills">Skills</a>
@@ -211,83 +287,63 @@
   </div>
 </header>
 
-<div class="wrap">
+<div class="container">
 
-  <section class="hero" style="border-bottom:none;">
-    <div class="hero-bloom"></div>
-    <div class="kicker">Bangalore, Karnataka</div>
-    <h1>Java &amp; Spring Boot developer, learning to build the systems around the code.</h1>
-    <p class="lead">MCA graduate with a foundation in Java, Spring Boot, and object-oriented programming, built through academic projects and a backend development internship. Comfortable with SQL, REST APIs, and Git and picking up AWS and DevOps fundamentals.</p>
-    <div class="cta-row">
-      <a class="btn primary" href="#projects">View projects</a>
-      <a class="btn ghost" href="https://github.com/ShreeeBhat06">GitHub</a>
-      <a class="btn ghost" href="mailto:shreelaxmibhat9685@gmail.com">Email me</a>
-    </div>
+  <section class="hero">
+    <p class="location">Bengaluru, Karnataka</p>
+    <h1>Java &amp; Spring Boot Developer</h1>
+    <p class="summary">MCA graduate with a foundation in Java, Spring Boot, and object-oriented programming, built through academic projects and a backend development internship. Comfortable with SQL, REST APIs, and Git, and currently learning AWS and DevOps tools.</p>
+    <a class="btn primary" href="#projects">View Projects</a>
+    <a class="btn secondary" href="https://github.com/ShreeeBhat06">GitHub</a>
+    <a class="btn secondary" href="mailto:shreelaxmibhat9685@gmail.com">Email Me</a>
   </section>
 
   <section id="about">
-    <h2>About</h2>
+    <h2>About Me</h2>
     <div class="about">
-      <p>I'm an <strong>MCA graduate from Global Institute of Management Sciences, Bengaluru</strong>. My foundation is in Java backend development — building REST APIs with Spring Boot, Spring Security, and Hibernate, and thinking in terms of clear data models and endpoints that hold up.</p>
-      <p>Alongside that, I've been building familiarity with <strong>cloud and DevOps fundamentals</strong> — AWS basics (EC2, S3, IAM, VPC, EBS) and tools like Docker, Kubernetes, Jenkins, Terraform, and Ansible , because I want to understand more of what happens once code leaves my machine.</p>
-      <p>I'm looking to start my career as a <strong>Software Engineer</strong>, somewhere I can keep learning quickly and grow into a well-rounded developer.</p>
+      <p>I'm an MCA graduate from Global Institute of Management Sciences, Bengaluru. My foundation is in Java backend development - building REST APIs with Spring Boot, Spring Security, and Hibernate.</p>
+      <p>I've also been building familiarity with cloud and DevOps tools - AWS basics (EC2, S3, IAM, VPC, EBS) along with Docker, Kubernetes, Jenkins, Terraform, and Ansible, so I can understand what happens after code is deployed.</p>
+      <p>I'm looking to start my career as a Software Engineer, somewhere I can keep learning and grow into a well-rounded developer.</p>
     </div>
-    <div class="facts">
-      <div class="fact"><div class="k">Based in</div><div class="v">Bengaluru, IN</div></div>
-      <div class="fact"><div class="k">Education</div><div class="v">MCA · GIMS</div></div>
-      <div class="fact"><div class="k">Core stack</div><div class="v">Java + Spring Boot</div></div>
-      <div class="fact"><div class="k">Status</div><div class="v" style="color:var(--lavender);">Open to work</div></div>
-    </div>
+    <table class="facts">
+      <tr><td class="label">Based in</td><td>Bengaluru, India</td></tr>
+      <tr><td class="label">Education</td><td>MCA, Global Institute of Management Sciences</td></tr>
+      <tr><td class="label">Core Stack</td><td>Java, Spring Boot</td></tr>
+      <tr><td class="label">Status</td><td>Open to work</td></tr>
+    </table>
   </section>
 
   <section id="skills">
     <h2>Skills</h2>
 
-    <div class="skill-group">
-      <div class="label">Programming &amp; concepts</div>
-      <div class="chip-row">
-        <span class="chip">Java</span>
-        <span class="chip">SQL</span>
-        <span class="chip">JavaScript</span>
-        <span class="chip">HTML / CSS</span>
-        <span class="chip">OOP</span>
-        <span class="chip">REST API design</span>
-        <span class="chip">MVC architecture</span>
-      </div>
+    <div class="skill-block">
+      <h3>Programming &amp; Concepts</h3>
+      <ul class="tag-list">
+        <li>Java</li><li>SQL</li><li>JavaScript</li><li>HTML/CSS</li>
+        <li>OOP</li><li>REST API Design</li><li>MVC Architecture</li>
+      </ul>
     </div>
 
-    <div class="skill-group">
-      <div class="label">Frameworks</div>
-      <div class="chip-row">
-        <span class="chip">Spring Boot</span>
-        <span class="chip">Spring MVC</span>
-        <span class="chip">Hibernate</span>
-        <span class="chip">JDBC</span>
-        <span class="chip">Servlets</span>
-      </div>
+    <div class="skill-block">
+      <h3>Frameworks</h3>
+      <ul class="tag-list">
+        <li>Spring Boot</li><li>Spring MVC</li><li>Hibernate</li><li>JDBC</li><li>Servlets</li>
+      </ul>
     </div>
 
-    <div class="skill-group">
-      <div class="label">Cloud &amp; DevOps — working knowledge</div>
-      <div class="chip-row">
-        <span class="chip soft">AWS (EC2, S3, IAM, VPC, EBS)</span>
-        <span class="chip soft">Docker</span>
-        <span class="chip soft">Kubernetes</span>
-        <span class="chip soft">Jenkins</span>
-        <span class="chip soft">Terraform</span>
-        <span class="chip soft">Ansible</span>
-      </div>
+    <div class="skill-block">
+      <h3>Cloud &amp; DevOps</h3>
+      <ul class="tag-list">
+        <li>AWS (EC2, S3, IAM, VPC, EBS)</li><li>Docker</li><li>Kubernetes</li>
+        <li>Jenkins</li><li>Terraform</li><li>Ansible</li>
+      </ul>
     </div>
 
-    <div class="skill-group">
-      <div class="label">Tools</div>
-      <div class="chip-row">
-        <span class="chip">Git</span>
-        <span class="chip">GitHub</span>
-        <span class="chip">Linux</span>
-        <span class="chip">Postman</span>
-        <span class="chip">Maven</span>
-      </div>
+    <div class="skill-block">
+      <h3>Tools</h3>
+      <ul class="tag-list">
+        <li>Git</li><li>GitHub</li><li>Linux</li><li>Postman</li><li>Maven</li>
+      </ul>
     </div>
   </section>
 
@@ -295,67 +351,63 @@
     <h2>Projects</h2>
 
     <div class="project">
-      <div class="project-top">
-        <h3>TaskFlow — RESTful Task Management API</h3>
-        <div class="project-links">
-          <a href="https://github.com/ShreeeBhat06/taskflow-api">GitHub</a>
-        </div>
+      <div class="project-title-row">
+        <h3>TaskFlow - RESTful Task Management API</h3>
+        <div class="project-links"><a href="https://github.com/ShreeeBhat06/taskflow-api">GitHub Repo</a></div>
       </div>
       <p>A REST API for task management with full CRUD operations, status tracking, and priority-based filtering. Registration and login are handled with Spring Security and JWT-based authentication, and all endpoints are documented with Swagger UI.</p>
-      <div class="stack-row">
-        <span>Java</span><span>Spring Boot 3</span><span>Spring Security</span><span>JWT</span><span>MySQL</span><span>Swagger UI</span>
-      </div>
+      <p class="stack">Java | Spring Boot 3 | Spring Security | JWT | MySQL | Swagger UI</p>
     </div>
 
     <div class="project">
-      <div class="project-top">
-        <h3>ProjectNest — Academic Project Management System</h3>
-        <div class="project-links">
-          <a href="https://github.com/ShreeeBhat06/ProjectNest">GitHub</a>
-        </div>
+      <div class="project-title-row">
+        <h3>ProjectNest - Academic Project Management System</h3>
+        <div class="project-links"><a href="https://github.com/ShreeeBhat06/ProjectNest">GitHub Repo</a></div>
       </div>
-      <p>A full-stack system with three role-based portals Student, Faculty, and Admin. Students submit projects with file uploads and track status, faculty review submissions and leave feedback, and admins manage accounts and platform activity.</p>
-      <div class="stack-row">
-        <span>Java</span><span>Spring Boot 3</span><span>Thymeleaf</span><span>Spring Security</span><span>MySQL</span><span>Hibernate</span>
+      <p>A full-stack web application with three role-based portals - Student, Faculty, and Admin. Students submit projects with file uploads and track status, faculty review submissions and leave feedback, and admins manage accounts and platform activity.</p>
+      <p class="stack">Java | Spring Boot 3 | Thymeleaf | Spring Security | MySQL | Hibernate</p>
+    </div>
+
+    <div class="project">
+      <div class="project-title-row">
+        <h3>Cafeapp - CI/CD &amp; Kubernetes Deployment Pipeline</h3>
+        <div class="project-links"><a href="https://github.com/ShreeeBhat06">GitHub Repo</a></div>
       </div>
+      <p>Designed and deployed a containerized Spring Boot application on a self-managed Kubernetes cluster across four AWS EC2 instances.</p>
+      <ul>
+        <li>Automated the CI/CD workflow using two Jenkins pipelines - one for build and Docker image push, another for parameterized app/database deployment.</li>
+        <li>Configured Kubernetes resources including an app Deployment, a MySQL StatefulSet with persistent storage, and an Nginx reverse proxy for public access.</li>
+      </ul>
+      <p class="stack">Spring Boot | Docker | Jenkins | Kubernetes | AWS EC2 | Nginx</p>
     </div>
   </section>
 
   <section id="experience">
     <h2>Experience</h2>
-    <div class="exp-row">
-      <div class="exp-meta">Jun 2025 – Sept 2025<br>Bengaluru</div>
-      <div class="exp-body">
-        <h3>Java Developer Intern</h3>
-        <div class="role">Robowaves (a unit of Test Yantra Software Solutions)</div>
-        <ul>
-          <li>Worked on web application features using Java and Spring Boot as part of a professional development team.</li>
-          <li>Used Git for version control, participated in code reviews, and coordinated tasks with the team.</li>
-          <li>Gained exposure to real-time project workflows, including debugging, testing, and deployment.</li>
-        </ul>
-      </div>
+    <div class="exp-item">
+      <h3>Java Developer Intern</h3>
+      <p class="exp-sub">Robowaves (a unit of Test Yantra Software Solutions) | Jun 2025 - Sept 2025 | Bengaluru</p>
+      <ul>
+        <li>Worked on web application features using Java and Spring Boot as part of a professional development team.</li>
+        <li>Used Git for version control, participated in code reviews, and coordinated tasks with the team.</li>
+        <li>Gained exposure to real-time project workflows, including debugging, testing, and deployment.</li>
+      </ul>
     </div>
   </section>
 
-  <section id="contact" style="border-bottom:none;">
-    <div class="contact-inner">
-      <div class="contact-glow"></div>
-      <h2>Let's talk.</h2>
-      <p>Open to Software Engineer and backend developer roles, full-time, across India.</p>
-      <div class="contact-links">
-        <a class="btn primary" href="mailto:shreelaxmibhat9685@gmail.com">Email</a>
-        <a class="btn ghost" href="https://www.linkedin.com/in/shreelaxmibhat">LinkedIn</a>
-        <a class="btn ghost" href="https://github.com/ShreeeBhat06">GitHub</a>
-      </div>
-    </div>
+  <section id="contact" style="border-bottom: none;">
+    <h2>Contact</h2>
+    <p>Open to Software Engineer and backend developer roles, full-time, across India.</p>
+    <a class="btn primary" href="mailto:shreelaxmibhat9685@gmail.com">Email</a>
+    <a class="btn secondary" href="https://www.linkedin.com/in/shreelaxmibhat">LinkedIn</a>
+    <a class="btn secondary" href="https://github.com/ShreeeBhat06">GitHub</a>
   </section>
-
-  <footer>
-    <span>Shreelaxmi Bhat</span>
-    <span>Bengaluru, Karnataka</span>
-  </footer>
 
 </div>
+
+<footer>
+  <p>&copy; Shreelaxmi Bhat, Bengaluru, Karnataka</p>
+</footer>
 
 </body>
 </html>
